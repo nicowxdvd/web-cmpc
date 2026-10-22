@@ -18,7 +18,7 @@ docker compose up -d --build
 
 La web queda en `http://localhost:5173`
 
-NOTA: Importante! Correr el seed que esta en la api, leer atentamente el readme.
+NOTA: Importante! Correr el seed que esta en la api, leer atentamente el readme de la api.
 
 
 ## Login
@@ -27,11 +27,11 @@ NOTA: Importante! Correr el seed que esta en la api, leer atentamente el readme.
 
 ## Guia de uso de la web
 
-1.- pantalla de inicio, ingresar correo y contraseña (`admin@admin.com` / `admin123`)
+1.- Pantalla de inicio, ingresar correo y contraseña (`admin@admin.com` / `admin123`)
 2.- En el Home, esquina superior derecha se encuentran las opciones de 
     * Ingresar nuevo libro
     * exportar csv
-    * Cerrar session
+    * Cerrar sesion
 
  2.1.- Ingresar nuevo libro, pantalla con formulario para ingresar. Tambien esta la opcion de cancelar, que redirige al home
  2.2.- Exportar csv, da la opcion de descargar un csv con el listado de libros.
@@ -46,6 +46,10 @@ NOTA: Importante! Correr el seed que esta en la api, leer atentamente el readme.
         5.3.1.- Editar el libro
         5.3.4.- Eliminar el libro
 6.- Paginacion, al final de la tabla de libros se encuentra la paginación
+
+
+
+
 
 ## ############ Modo desarrollo ####################
 
