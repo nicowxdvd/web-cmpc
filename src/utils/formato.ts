@@ -1,0 +1,1 @@
+export const formatoPrecio = (precio: number) => precio.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
