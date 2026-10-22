@@ -1,75 +1,71 @@
-# React + TypeScript + Vite
+# web-cmpc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend de la gestión de libros de CMPC. React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Docker, o Node 24 para el modo desarrollo
+- La API de `api-cmpc` debe estar corriendo en `http://localhost:3000`
 
-## React Compiler
+## Con Docker
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tanto la web como la api, estan configuradas para cuando se corra el comando docker compose, queden arriba los servicios.
+Con el fin de llegar y testearlos. Pero ademas adjunto los comandos para una revision en desarrollo
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+docker compose up -d --build
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+La web queda en `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+NOTA: Importante! Correr el seed que esta en la api, leer atentamente el readme.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 
+## Login
+
+`admin@admin.com` / `admin123`
+
+## Guia de uso de la web
+
+1.- pantalla de inicio, ingresar correo y contraseña (`admin@admin.com` / `admin123`)
+2.- En el Home, esquina superior derecha se encuentran las opciones de 
+    * Ingresar nuevo libro
+    * exportar csv
+    * Cerrar session
+
+ 2.1.- Ingresar nuevo libro, pantalla con formulario para ingresar. Tambien esta la opcion de cancelar, que redirige al home
+ 2.2.- Exportar csv, da la opcion de descargar un csv con el listado de libros.
+ 2.3.- Cerrar sesion.
+
+3.- La barra de filtros, permite filtro por buscador, autores, disponibilidad, generos y editoriales
+4.- La opcion de ordenar, entrega opcion alfabeticamente, por precio y fecha
+5.- Tabla de libros
+    5.1.- Para ver el detalle de libros, se debe hacer click en el titulo (Link)
+    5.2.- En el detalle del libro, esquina superior derecha tiene 3 opciones
+        5.2.1.- Volver al listado inicial
+        5.3.1.- Editar el libro
+        5.3.4.- Eliminar el libro
+6.- Paginacion, al final de la tabla de libros se encuentra la paginación
+
+## ############ Modo desarrollo ####################
+
+```bash
+npm install
+cp .env.example .env
+npm run dev
 ```
+
+## Variable de entorno
+
+| Variable | Descripción |
+|---|---|
+| `VITE_API_URL` | URL de la API (por defecto `http://localhost:3000`) |
+
+## Scripts
+
+- `npm run dev`: desarrollo
+- `npm run build`: compilar
+- `npm test`: tests
+- `npm run lint`: linter
+
+### #################################################
